@@ -70,7 +70,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api', diceRollRoutes);
 
-const connectionMongo = require('./connectionMongo');
+const connectionMongo = require('./connectionMongoDB');
 connectionMongo();
 
 server.listen(port, () => {
