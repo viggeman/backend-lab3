@@ -68,19 +68,19 @@
   const chatWindow = ref(null);
 
   const setPlayerName = () => {
-    socket.emit('setPlayerName', playerNameInput.value); // Send player name to the server
+    socket.emit('setPlayerName', playerNameInput.value);
     playerName.value = playerNameInput.value;
     playerNameInput.value = '';
   };
 
   const rollDice = () => {
-    socket.emit('diceRoll'); // Send dice roll to the server
+    socket.emit('diceRoll');
   };
 
   const sendMessage = () => {
     if (message.value) {
-      socket.emit('message', message.value); // Send message to the server
-      message.value = ''; // Clear the input field
+      socket.emit('message', message.value);
+      message.value = '';
     }
   };
 
@@ -153,18 +153,6 @@
     margin-bottom: 10px;
   }
 
-  /* .chat-window {
-    max-height: 600px;
-    min-height: 400px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    padding: 10px;
-    scroll-behavior: smooth;
-    overflow-anchor: none;
-    flex-grow: 0;
-    flex-shrink: 0;
-  } */
-
   .chat-window {
     width: 400px;
     height: 400px;
@@ -175,8 +163,8 @@
   }
 
   .chat-messages {
-    flex: 1; /* This allows messages to fill remaining space */
-    overflow-y: scroll; /* This enables scrolling */
+    flex: 1;
+    overflow-y: scroll;
     padding: 10px;
   }
 

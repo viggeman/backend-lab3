@@ -10,7 +10,6 @@ const io = new Server(server, { cors: { origin: '*' } });
 
 const diceRollRoutes = require('./routes/diceRollRoutes');
 const DiceRoll = require('./models/diceRoll');
-// const Game = require('./models/diceGame');
 
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id);
@@ -29,16 +28,14 @@ io.on('connection', (socket) => {
     const roll = Math.floor(Math.random() * 6) + 1;
 
     try {
-      // Get existing rolls for the player
       const existingRolls = await DiceRoll.find({ playerName });
 
       let totalSum = 0;
       if (existingRolls.length > 0) {
-        // Calculate total sum from existing rolls
         totalSum = existingRolls.reduce((acc, roll) => acc + roll.diceRoll, 0);
       }
 
-      totalSum += roll; // Add current roll to total
+      totalSum += roll;
 
       const newDiceRoll = new DiceRoll({
         playerName,
